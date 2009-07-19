@@ -1,14 +1,14 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT([mpeg4-2000], 1.2.3)
-AM_CONFIG_HEADER(mpeg4-2000.h)
+AC_CONFIG_HEADER(mpeg4-2000.h)
 dnl Detect the canonical host and target build environment
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 
-AM_INIT_AUTOMAKE([1.5 no-define])
+AM_INIT_AUTOMAKE([1.5 no-define foreign])
 
 AC_LIBTOOL_DLOPEN
-AM_PROG_LIBTOOL
+AC_PROG_LIBTOOL
 AC_MSG_CHECKING([libtool tag=C for nasm])
 if test -z "`./libtool --help | grep \"\\-\\-tag\"`"; then
   AC_MSG_RESULT([no])

@@ -1,13 +1,14 @@
 
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT(mpeg4ip, 1.6.1)
-AM_CONFIG_HEADER(mpeg4ip_config.h)
+AC_CONFIG_HEADER(mpeg4ip_config.h)
 dnl Prevent user from running just ./configure
-AC_CHECK_FILE(./bootstrapped, [did_bootstrap=yes], [did_bootstrap=no])
-if test x$did_bootstrap = xno; then
-   AC_MSG_ERROR([Please run bootstrap first])
-   exit -1
-fi
+dnl AC_CHECK_FILE(./bootstrapped, [did_bootstrap=yes], [did_bootstrap=no])
+dnl if test x$did_bootstrap = xno; then
+dnl    AC_MSG_ERROR([Please run bootstrap first])
+dnl   exit -1
+dnl fi
+
 rm -f config.h >&/dev/null
 touch config.h
 dnl Detect the canonical host and target build environment
@@ -15,6 +16,7 @@ AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 
 AM_INIT_AUTOMAKE([1.5 no-define])
+AM_MAINTAINER_MODE
 
 dnl Checks for programs. 
 

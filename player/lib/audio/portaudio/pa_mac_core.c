@@ -110,16 +110,6 @@
               error when filling RingBuffer with 2^N zero bytes.
 */
 
-#include <CoreServices/CoreServices.h>
-#include <CoreAudio/CoreAudio.h>
-#include <sys/time.h>
-#include <sys/resource.h>
-#include <unistd.h>
-#include <AudioUnit/AudioUnit.h>
-#include <AudioToolbox/DefaultAudioOutput.h>
-#include <AudioToolbox/AudioConverter.h>
-#include <CoreAudio/HostTime.h>
-
 #include "portaudio.h"
 #include "pa_host.h"
 #include "pa_trace.h"

@@ -48,6 +48,20 @@ extern "C"
 #define SUPPORT_AUDIO_CAPTURE  (1)
 #endif
 
+#ifdef __APPLE__
+#include <CoreServices/CoreServices.h>
+#include <CoreAudio/CoreAudio.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#include <unistd.h>
+#include <AudioUnit/AudioUnit.h>
+#include <AudioToolbox/DefaultAudioOutput.h>
+#include <AudioToolbox/AudioConverter.h>
+#include <CoreAudio/HostTime.h>
+#endif
+
+#ifndef __APPLE__
+
 #ifndef int32
     typedef long int32;
 #endif
@@ -59,6 +73,8 @@ extern "C"
 #endif
 #ifndef uint16
     typedef unsigned short uint16;
+#endif
+
 #endif
 
 /* Used to convert between various sample formats. */
