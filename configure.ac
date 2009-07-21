@@ -47,7 +47,7 @@ AM_CONDITIONAL(HAVE_MAC_OSX, $have_macosx)
 AC_CONFIG_SUBDIRS(common/video/iso-mpeg4)
 
 AC_LIBTOOL_DLOPEN
-AM_PROG_LIBTOOL
+AC_PROG_LIBTOOL
 AC_MSG_CHECKING([libtool tag=C for nasm])
 if test -z "`./libtool --help | grep \"\\-\\-tag\"`"; then
   AC_MSG_RESULT([no])
