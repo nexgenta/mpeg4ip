@@ -1,5 +1,4 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(README)
 
 dnl Set various version strings - taken gratefully from the GTk sources
 #
@@ -12,6 +11,7 @@ dnl Set various version strings - taken gratefully from the GTk sources
 # if backwards compatibility has been broken,
 # set SDL_BINARY_AGE and SDL_INTERFACE_AGE to 0.
 #
+AC_INIT(SDL, 1.2.8, README)
 SDL_MAJOR_VERSION=1
 SDL_MINOR_VERSION=2
 SDL_MICRO_VERSION=8
@@ -41,14 +41,15 @@ dnl Detect the canonical host and target build environment
 AC_CANONICAL_SYSTEM
 
 dnl Setup for automake
-AM_INIT_AUTOMAKE(SDL, $SDL_VERSION)
+AM_INIT_AUTOMAKE(foreign)
 
 dnl Check for tools
 
 AC_LIBTOOL_WIN32_DLL
-AM_PROG_LIBTOOL
+AC_PROG_LIBTOOL
 AC_PROG_MAKE_SET
 AC_PROG_CC
+AM_PROG_AS
 AC_C_INLINE
 AC_C_CONST
 AC_PROG_CXX
@@ -60,7 +61,7 @@ CCAS="$CC"
 AC_SUBST(CCAS)
 CCASFLAGS=""
 AC_SUBST(CCASFLAGS)
-AM_CONDITIONAL([am__fastdepOBJC], false)
+dnl AM_CONDITIONAL([am__fastdepOBJC], false)
 
 dnl The alpha architecture needs special flags for binary portability
 case "$target" in
