@@ -367,7 +367,7 @@ AC_ARG_ENABLE(player,
   no)  player=false ;;
   *)   AC_MSG_ERROR(bad value ${enableval} for --enable-player) ;;
 esac],
-[player=true])
+[player=false])
 AM_CONDITIONAL(PLAYER, [test x$player = xtrue])
 
 #autoconf is slightly confusing here: 
@@ -810,27 +810,18 @@ if test x$have_x = xyes; then
     extra="$X_LIBS -lX11 -lXext"
 fi
 dnl Get SDL cflags and SDL libraries to include
-SDL_LIBS="`sdl-config --libs` $extra"
+PKG_CHECK_MODULES([SDL],[sdl >= 1.2.14],,[
+	SDL_CFLAGS=`sdl-config --cflags`
+	SDL_LIBS="`sdl-config --libs`"
+])
+SDL_LIB_LIBS="`echo $SDL_LIBS | sed /-lSDLmain/s///`"
+SDL_LIBS="$SDL_LIBS $extra"
 AC_SUBST(SDL_LIBS)
-SDL_LIB_LIBS="`sdl-config --libs | sed /-lSDLmain/s///`"
 AC_SUBST(SDL_LIB_LIBS)
-
 AC_SUBST(SUN_LIBS)
 
 dnl
 BASE_ERR="-Wall"
-
-AC_ARG_ENABLE(warns-as-err,
-[AC_HELP_STRING([--enable-warns-as-err],[enable warnings as errors])],
-	[if test x$enableval = xno; then
-	   AC_MSG_NOTICE([compiler warnings will not be errors])
-         else 
-           BASE_ERR="$BASE_ERR -Werror"
-	   AC_MSG_NOTICE([enabling compiler warnings as errors])
-         fi
-	 ],
-	 [AC_MSG_NOTICE([compiler warnings will not be errs])]) 
-
 BILLS_CWARNINGS="$BASE_ERR"
 
 AM_CONDITIONAL(HAVE_ALIGN_LOOPS, false)
@@ -873,8 +864,6 @@ AC_SUBST(BILLS_CPPWARNINGS)
 
 PLAYER_PLUGIN_DIR=$libdir/mp4player_plugin
 AC_SUBST(PLAYER_PLUGIN_DIR)
-
-SDL_CFLAGS=`sdl-config --cflags`
 
 case "$target" in
    *-apple-darwin*)

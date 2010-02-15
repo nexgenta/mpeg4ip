@@ -41,6 +41,9 @@
 #endif
 
 #if defined (__unix__)
+#ifndef SDL_VIDEO_DRIVER_X11
+#error when building for Unix systems, SDL must be compiled with X11 support
+#endif
 #define WM_X11
 #endif
 

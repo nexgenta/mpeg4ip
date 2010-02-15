@@ -33,6 +33,6 @@ libmpeg4ip_faad_la_SOURCES = \
 	transfo.h\
 	util.h
 INCLUDES = -I$(top_srcdir)/include
-AM_CFLAGS = -O2 -Werror -Wall -fexceptions -fno-strict-aliasing
+AM_CFLAGS = -O2 -Wall -fexceptions -fno-strict-aliasing
 
 EXTRA_DIST = COPYING libfaad60.dsp README libfaad.vcproj

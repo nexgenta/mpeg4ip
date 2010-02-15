@@ -1331,7 +1331,10 @@ case "$target" in
         AC_MSG_RESULT(not implemented yet)
         ;;
 esac
-MYSDL_CFLAGS=`sdl-config --cflags`
+PKG_CHECK_MODULES([MYSDL],[sdl >= 1.2.14],,[
+        MYSDL_CFLAGS=sdl-config --cflags
+        MYSDL_LIBS="sdl-config --libs"
+		])
 CFLAGS="$CFLAGS $MYSDL_CFLAGS"
 # Finally create all the generated files
 dnl Important: Any directory that you want to be in the distcheck should

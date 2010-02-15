@@ -106,18 +106,6 @@ AC_DEFUN([MY_CHECK_CC_OPT_F_OR_M],
 
 dnl
 BASE_ERR="-Wall"
-
-AC_ARG_ENABLE(warns-as-err,
-[AC_HELP_STRING([--enable-warns-as-err],[enable warnings as errors])],
-	[if test x$enableval = xno; then
-	   AC_MSG_NOTICE([compiler warnings will not be errors])
-         else 
-           BASE_ERR="$BASE_ERR -Werror"
-	   AC_MSG_NOTICE([enabling compiler warnings as errors])
-         fi
-	 ],
-	 [AC_MSG_NOTICE([compiler warnings will not be errs])]) 
-
 BILLS_CWARNINGS="$BASE_ERR"
 
 AM_CONDITIONAL(HAVE_ALIGN_LOOPS, false)
