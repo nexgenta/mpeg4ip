@@ -28,3 +28,6 @@ mpeg4ip-config
 config.h
 mpeg4ip_config.h
 mpeg4ip_config.h.in
+/common/video/iso-mpeg4/mpeg4-2000.h
+/common/video/iso-mpeg4/mpeg4-2000.h.in
+/common/video/mpeg4-2000/mpeg4-2000.h.in
