@@ -22,7 +22,7 @@ struct option *create_long_opts_from_config (CConfigSet *pConfig,
   memset(long_options, 0, opts_size);
   
   for (ix = 0; ix < max_vars; ix++) {
-    long_options[ix].name = pConfig->GetNameFromIndex(ix);
+    long_options[ix].name = (char *) pConfig->GetNameFromIndex(ix);
     long_options[ix].has_arg = pConfig->GetTypeFromIndex(ix) == CONFIG_TYPE_BOOL ? 2 : 1;
     long_options[ix].val = base_offset + ix;
   }

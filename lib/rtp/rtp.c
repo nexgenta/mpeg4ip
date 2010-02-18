@@ -2553,7 +2553,7 @@ int rtp_send_data_iov (struct rtp *session, uint32_t rtp_ts,
   /* Add the RTP packet header to the beginning of the iov list */
   my_iov = (struct iovec*)xmalloc(my_iov_count * sizeof(struct iovec));
 
-  my_iov[0].iov_base = buffer + RTP_PACKET_HEADER_SIZE;
+  my_iov[0].iov_base = (caddr_t) buffer + RTP_PACKET_HEADER_SIZE;
   my_iov[0].iov_len = buffer_len;
 
   for (i = 1, payload_len = 0; i < my_iov_count; i++) {

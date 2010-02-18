@@ -64,6 +64,7 @@
 #include "QMUtils.hpp"
 #include "QM.hpp"
 
+#undef ERR
 
 Int CVTCCommon::ztqQListInit()
 {
