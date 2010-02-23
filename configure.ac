@@ -13,7 +13,6 @@ rm -f config.h >&/dev/null
 touch config.h
 dnl Detect the canonical host and target build environment
 AC_CANONICAL_HOST
-AC_CANONICAL_TARGET
 
 AM_INIT_AUTOMAKE([1.5 no-define])
 AM_MAINTAINER_MODE
@@ -24,7 +23,7 @@ dnl check for mac
 SUN_LIBS=
 have_macosx=false
 config_sdl=true
-case "$target" in
+case "$host" in
    *-apple-darwin*)
    have_macosx=true
    config_sdl=false
@@ -400,7 +399,7 @@ AC_ARG_ENABLE(mp4live,
 
 have_mp4live=false
 if test x$enable_mp4live = xyes; then
-   case "$target" in
+   case "$host" in
    *-*-linux*)
 	have_mp4live=true
 	AC_ARG_ENABLE(mp4live-alsa,
@@ -784,7 +783,7 @@ if test x$enable_mmx = xyes; then
    fi
    if test x$USENASM = xtrue; then
         AC_PATH_PROG(NASM, nasm)
-	case $target in
+	case $host in
 	i?86*)
 		CFLAGS="$CFLAGS -DUSE_MMX"
 		CXXFLAGS="$CXXFLAGS -DUSE_MMX"
@@ -865,7 +864,7 @@ AC_SUBST(BILLS_CPPWARNINGS)
 PLAYER_PLUGIN_DIR=$libdir/mp4player_plugin
 AC_SUBST(PLAYER_PLUGIN_DIR)
 
-case "$target" in
+case "$host" in
    *-apple-darwin*)
 	have_ubb=false
 	AC_ARG_ENABLE(universal-binary, 
